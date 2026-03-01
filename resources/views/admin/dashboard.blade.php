@@ -8,13 +8,17 @@
             <h1 class="h3 mb-1">Dashboard</h1>
             <p class="text-muted mb-0">Periode: {{ $resume['intervalle']['du'] }} au {{ $resume['intervalle']['au'] }}</p>
         </div>
-        <form method="GET" action="{{ route('admin.dashboard') }}" class="d-flex gap-2">
+        <form method="GET" action="{{ route('admin.dashboard') }}" class="row g-2">
+            <div class="col-12 col-sm-auto">
             <select name="periode" class="form-select">
                 <option value="mois" @selected($periode==='mois')>Mois</option>
                 <option value="trimestre" @selected($periode==='trimestre')>Trimestre</option>
                 <option value="annee" @selected($periode==='annee')>Annee</option>
             </select>
-            <button class="btn btn-primary"><i class="bi bi-funnel me-1"></i>Filtrer</button>
+            </div>
+            <div class="col-12 col-sm-auto">
+            <button class="btn btn-primary w-100"><i class="bi bi-funnel me-1"></i>Filtrer</button>
+            </div>
         </form>
     </div>
 

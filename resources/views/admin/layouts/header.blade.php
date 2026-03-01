@@ -3,7 +3,7 @@
         <i class="bi bi-list"></i>
     </button>
 
-    <div class="ms-auto d-flex align-items-center gap-2">
+    <div class="ms-auto d-flex align-items-center gap-2 flex-wrap justify-content-end">
         <button class="btn btn-light position-relative" type="button">
             <i class="bi bi-bell"></i>
             <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle p-1">3</span>

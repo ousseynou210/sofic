@@ -1,7 +1,10 @@
 @extends('admin.layouts.app')
 @section('title','Modifier facture')
 @section('content')
-    <h1 class="h4 mb-3">Modifier facture {{ $facture->numero_facture }}</h1>
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+        <h1 class="h4 mb-0">Modifier facture {{ $facture->numero_facture }}</h1>
+        <a class="btn btn-light" href="{{ route('admin.factures.show', $facture) }}">Retour</a>
+    </div>
     <form method="POST" action="{{ route('admin.factures.update', $facture) }}">
         @csrf
         @method('PUT')
@@ -49,7 +52,7 @@
         </div>
 
         <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center">
+            <div class="card-header d-flex flex-wrap justify-content-between align-items-center gap-2">
                 <span>Lignes facture</span>
                 <button type="button" class="btn btn-sm btn-outline-primary" id="add-line">Ajouter ligne</button>
             </div>
@@ -58,15 +61,15 @@
             </div>
         </div>
 
-        <div class="mt-3">
+        <div class="mt-3 d-flex flex-wrap gap-2">
             <button class="btn btn-primary">Enregistrer modifications</button>
             <a class="btn btn-secondary" href="{{ route('admin.factures.show', $facture) }}">Retour</a>
         </div>
     </form>
 
     <template id="line-template">
-        <div class="row g-2 align-items-end mb-2 line-item">
-            <div class="col-md-4">
+        <div class="row g-2 align-items-end mb-2 line-item border-bottom pb-2">
+            <div class="col-12 col-lg-4">
                 <label class="form-label">Produit</label>
                 <select class="form-select line-produit" data-name="produit_id">
                     <option value="">Libre</option>
@@ -75,10 +78,10 @@
                     @endforeach
                 </select>
             </div>
-            <div class="col-md-3"><label class="form-label">Description</label><input class="form-control" data-name="description"></div>
-            <div class="col-md-2"><label class="form-label">Quantite</label><input type="number" class="form-control" data-name="quantite" value="1" min="1" required></div>
-            <div class="col-md-2"><label class="form-label">Prix unitaire</label><input type="number" step="0.01" class="form-control" data-name="prix_unitaire" value="0" min="0" required></div>
-            <div class="col-md-1"><button type="button" class="btn btn-outline-danger w-100 remove-line">X</button></div>
+            <div class="col-12 col-lg-3"><label class="form-label">Description</label><input class="form-control" data-name="description"></div>
+            <div class="col-6 col-lg-2"><label class="form-label">Quantite</label><input type="number" class="form-control" data-name="quantite" value="1" min="1" required></div>
+            <div class="col-6 col-lg-2"><label class="form-label">Prix unitaire</label><input type="number" step="0.01" class="form-control" data-name="prix_unitaire" value="0" min="0" required></div>
+            <div class="col-12 col-lg-1"><button type="button" class="btn btn-outline-danger w-100 remove-line">X</button></div>
         </div>
     </template>
 @endsection

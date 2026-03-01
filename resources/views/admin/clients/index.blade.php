@@ -4,15 +4,15 @@
     @php
         $estAdmin = auth()->user()?->role === 'admin';
     @endphp
-    <div class="d-flex justify-content-between align-items-center mb-3">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
         <h1 class="h4 mb-0">Clients</h1>
         @if($estAdmin)
             <a class="btn btn-primary" href="{{ route('admin.clients.create') }}">Nouveau client</a>
         @endif
     </div>
     <form class="row g-2 mb-3">
-        <div class="col-md-4"><input class="form-control" name="recherche" value="{{ $recherche }}" placeholder="Recherche"></div>
-        <div class="col-auto"><button class="btn btn-outline-secondary">Filtrer</button></div>
+        <div class="col-12 col-md-6"><input class="form-control" name="recherche" value="{{ $recherche }}" placeholder="Recherche"></div>
+        <div class="col-12 col-md-auto"><button class="btn btn-outline-secondary w-100">Filtrer</button></div>
     </form>
     <div class="table-responsive">
         <table class="table table-striped">

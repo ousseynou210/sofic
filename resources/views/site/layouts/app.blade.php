@@ -5,9 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', 'SOFIC')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+        .site-shell {
+            min-height: 100vh;
+        }
+        .site-navbar {
+            background: #fff;
+            border-bottom: 1px solid #e6ebf2;
+        }
+        .site-main {
+            padding-top: 1rem;
+            padding-bottom: 1.25rem;
+        }
+        @media (max-width: 991.98px) {
+            .site-main {
+                padding-top: .75rem;
+                padding-bottom: 1rem;
+            }
+            .table {
+                min-width: 640px;
+            }
+            .table th,
+            .table td {
+                white-space: nowrap;
+            }
+        }
+    </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-white border-bottom">
+<div class="site-shell">
+<nav class="navbar navbar-expand-lg navbar-light site-navbar">
     <div class="container">
         <a class="navbar-brand fw-bold" href="{{ route('site.accueil') }}">SOFIC</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteMenu">
@@ -24,7 +55,7 @@
     </div>
 </nav>
 
-<main class="container py-4">
+<main class="container site-main">
     @if($errors->any())
         <div class="alert alert-danger">
             <ul class="mb-0">
@@ -37,6 +68,7 @@
 
     @yield('content')
 </main>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

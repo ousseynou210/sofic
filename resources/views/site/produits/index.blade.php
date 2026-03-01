@@ -3,12 +3,12 @@
 @section('title', 'Produits - SOFIC')
 
 @section('content')
-    <div class="d-flex justify-content-between align-items-center mb-3">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
         <h1 class="h4 mb-0">Catalogue produits</h1>
     </div>
 
     <form method="GET" action="{{ route('site.produits') }}" class="row g-2 mb-3">
-        <div class="col-md-9">
+        <div class="col-12 col-md-9">
             <input
                 type="text"
                 class="form-control"
@@ -16,7 +16,7 @@
                 value="{{ $recherche }}"
                 placeholder="Rechercher un produit ou une categorie">
         </div>
-        <div class="col-md-3 d-grid">
+        <div class="col-12 col-md-3 d-grid">
             <button class="btn btn-primary" type="submit">Rechercher</button>
         </div>
     </form>

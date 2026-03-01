@@ -3,17 +3,17 @@
 @section('title', 'Accueil - SOFIC')
 
 @section('content')
-    <div class="p-4 p-md-5 mb-4 bg-light rounded-3 border">
+    <div class="p-3 p-md-5 mb-4 bg-light rounded-3 border">
         <div class="container-fluid py-2">
             <h1 class="display-6 fw-bold">Bienvenue sur SOFIC</h1>
-            <p class="col-md-8 fs-5 mb-4">
+            <p class="col-lg-8 fs-5 mb-4">
                 Consultez nos produits et suivez vos factures directement en ligne.
             </p>
-            <a href="{{ route('site.produits') }}" class="btn btn-primary btn-lg">Voir les produits</a>
+            <a href="{{ route('site.produits') }}" class="btn btn-primary btn-lg d-block d-sm-inline-block">Voir les produits</a>
         </div>
     </div>
 
-    <div class="d-flex justify-content-between align-items-center mb-3">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
         <h2 class="h4 mb-0">Produits recents</h2>
         <a href="{{ route('site.produits') }}" class="btn btn-outline-secondary btn-sm">Tout voir</a>
     </div>

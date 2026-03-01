@@ -2,7 +2,7 @@
 @section('title','Nouvelle facture')
 
 @section('content')
-    <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
         <div>
             <h1 class="h3 mb-1">Nouvelle facture</h1>
             <p class="text-muted mb-0">Creation rapide avec calcul automatique du total</p>
@@ -82,7 +82,7 @@
         </div>
 
         <div class="card soft-card mb-3">
-            <div class="card-header bg-white border-0 pt-3 d-flex justify-content-between align-items-center">
+            <div class="card-header bg-white border-0 pt-3 d-flex flex-wrap justify-content-between align-items-center gap-2">
                 <h6 class="mb-0">Lignes produits</h6>
                 <button type="button" class="btn btn-light btn-sm" @click="addLine()">
                     <i class="bi bi-plus-lg me-1"></i>Ajouter ligne
@@ -91,7 +91,7 @@
             <div class="card-body">
                 <template x-for="(line, idx) in lines" :key="idx">
                     <div class="row g-2 align-items-end mb-3 pb-3 border-bottom">
-                        <div class="col-lg-3">
+                        <div class="col-12 col-lg-3">
                             <label class="form-label">Produit</label>
                             <select class="form-select" :name="`lignes[${idx}][produit_id]`" x-model="line.produit_id" @change="applyProductPrice(line)">
                                 <option value="">Libre</option>
@@ -100,23 +100,23 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-12 col-lg-3">
                             <label class="form-label">Description</label>
                             <input class="form-control" :name="`lignes[${idx}][description]`" x-model="line.description">
                         </div>
-                        <div class="col-lg-2">
+                        <div class="col-6 col-lg-2">
                             <label class="form-label">Quantite</label>
                             <input type="number" min="1" class="form-control" :name="`lignes[${idx}][quantite]`" x-model.number="line.quantite">
                         </div>
-                        <div class="col-lg-2">
+                        <div class="col-6 col-lg-2">
                             <label class="form-label">Prix unitaire</label>
                             <input type="number" min="0" step="0.01" class="form-control" :name="`lignes[${idx}][prix_unitaire]`" x-model.number="line.prix_unitaire">
                         </div>
-                        <div class="col-lg-1 text-end">
+                        <div class="col-8 col-lg-1 text-end">
                             <span class="small text-muted d-block">Total</span>
                             <strong x-text="formatMoney(lineTotal(line))"></strong>
                         </div>
-                        <div class="col-lg-1 text-end">
+                        <div class="col-4 col-lg-1 text-end">
                             <button type="button" class="btn btn-outline-danger btn-sm" @click="removeLine(idx)">
                                 <i class="bi bi-trash"></i>
                             </button>
@@ -129,7 +129,7 @@
             </div>
         </div>
 
-        <div class="d-flex gap-2">
+        <div class="d-flex flex-wrap gap-2">
             <button class="btn btn-primary" type="submit" :disabled="isSubmitting">
                 <span x-show="!isSubmitting"><i class="bi bi-check2-circle me-1"></i>Enregistrer la facture</span>
                 <span x-show="isSubmitting"><span class="spinner-border spinner-border-sm me-1"></span>Enregistrement...</span>

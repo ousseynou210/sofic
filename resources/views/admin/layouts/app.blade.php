@@ -21,6 +21,7 @@
             --ok: #15a46f;
             --border: #e6ebf2;
         }
+        [x-cloak] { display: none !important; }
         body { font-family: "Plus Jakarta Sans", sans-serif; background: var(--app-bg); color: var(--text-main); }
         .app-shell { min-height: 100vh; display: flex; }
         .app-sidebar {
@@ -31,10 +32,18 @@
             position: fixed;
             inset: 0 auto 0 0;
             z-index: 1030;
+            height: 100vh;
+            overflow-y: auto;
             transform: translateX(-110%);
             transition: transform .25s ease;
         }
-        .app-sidebar.is-open { transform: translateX(0); }
+        .app-sidebar.is-open { transform: translateX(0); box-shadow: 0 12px 30px rgba(15, 23, 42, 0.22); }
+        .sidebar-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.45);
+            z-index: 1025;
+        }
         .sidebar-brand { display: flex; align-items: center; gap: .75rem; margin-bottom: 1.5rem; }
         .brand-mark {
             width: 2rem; height: 2rem; border-radius: .65rem;
@@ -67,6 +76,39 @@
         .status-partielle { background: rgba(245, 158, 11, .18); color: #b56f00; }
         .status-envoyee, .status-brouillon { background: rgba(31, 111, 235, .14); color: #1f6feb; }
         .status-annulee { background: rgba(239, 68, 68, .15); color: #d12f2f; }
+        @media (max-width: 991.98px) {
+            .app-header {
+                height: auto;
+                min-height: 72px;
+                padding: .75rem 1rem;
+            }
+            .app-content { padding: 1rem .75rem; }
+            .toast-container {
+                left: .5rem;
+                right: .5rem;
+                top: .5rem;
+                padding: 0 !important;
+            }
+            .toast { width: 100%; }
+            .table {
+                font-size: .92rem;
+                min-width: 720px;
+            }
+            .table th,
+            .table td {
+                white-space: nowrap;
+                vertical-align: middle;
+            }
+            .btn { font-size: .9rem; }
+        }
+        @media (max-width: 575.98px) {
+            .app-header .dropdown-toggle {
+                max-width: 190px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
         @media (min-width: 992px) {
             .app-sidebar { transform: translateX(0); }
             .app-main { margin-left: 260px; width: calc(100% - 260px); }
@@ -74,9 +116,16 @@
     </style>
     @stack('styles')
 </head>
-<body x-data="{ sidebarOpen: false }">
+<body x-data="{ sidebarOpen: false }" x-on:keydown.escape.window="sidebarOpen = false">
 @auth
     <div class="app-shell">
+        <div
+            class="sidebar-backdrop d-lg-none"
+            x-cloak
+            x-show="sidebarOpen"
+            x-transition.opacity
+            @click="sidebarOpen = false"
+        ></div>
         @include('admin.layouts.sidebar')
         <div class="app-main">
             @include('admin.layouts.header')

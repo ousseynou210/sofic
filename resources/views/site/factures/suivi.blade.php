@@ -9,7 +9,7 @@
         <div class="card-body">
             <form method="POST" action="{{ route('site.factures.suivi.resultat') }}" class="row g-3">
                 @csrf
-                <div class="col-md-6">
+                <div class="col-12 col-md-6">
                     <label class="form-label">Numero facture</label>
                     <input
                         type="text"
@@ -19,7 +19,7 @@
                         placeholder="FAC-2026-000001"
                         required>
                 </div>
-                <div class="col-md-6">
+                <div class="col-12 col-md-6">
                     <label class="form-label">Email ou telephone client</label>
                     <input
                         type="text"
@@ -30,7 +30,7 @@
                         required>
                 </div>
                 <div class="col-12">
-                    <button class="btn btn-primary" type="submit">Verifier</button>
+                    <button class="btn btn-primary w-100" type="submit">Verifier</button>
                 </div>
             </form>
         </div>
@@ -49,12 +49,12 @@
                 </div>
                 <div class="card-body">
                     <div class="row g-3 mb-3">
-                        <div class="col-md-4"><strong>Statut:</strong> {{ $facture->statut }}</div>
-                        <div class="col-md-4"><strong>Total:</strong> {{ number_format((float) $facture->total_facture, 2, ',', ' ') }} FCFA</div>
-                        <div class="col-md-4"><strong>Paye:</strong> {{ number_format($montantPaye, 2, ',', ' ') }} FCFA</div>
-                        <div class="col-md-4"><strong>Reste:</strong> {{ number_format($reste, 2, ',', ' ') }} FCFA</div>
-                        <div class="col-md-4"><strong>Date emission:</strong> {{ optional($facture->date_emission)->format('d/m/Y') }}</div>
-                        <div class="col-md-4"><strong>Client:</strong> {{ $facture->client?->nom }}</div>
+                        <div class="col-12 col-md-6 col-lg-4"><strong>Statut:</strong> {{ $facture->statut }}</div>
+                        <div class="col-12 col-md-6 col-lg-4"><strong>Total:</strong> {{ number_format((float) $facture->total_facture, 2, ',', ' ') }} FCFA</div>
+                        <div class="col-12 col-md-6 col-lg-4"><strong>Paye:</strong> {{ number_format($montantPaye, 2, ',', ' ') }} FCFA</div>
+                        <div class="col-12 col-md-6 col-lg-4"><strong>Reste:</strong> {{ number_format($reste, 2, ',', ' ') }} FCFA</div>
+                        <div class="col-12 col-md-6 col-lg-4"><strong>Date emission:</strong> {{ optional($facture->date_emission)->format('d/m/Y') }}</div>
+                        <div class="col-12 col-md-6 col-lg-4"><strong>Client:</strong> {{ $facture->client?->nom }}</div>
                     </div>
 
                     <h2 class="h6">Lignes</h2>

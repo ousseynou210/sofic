@@ -20,11 +20,11 @@
     <div class="card soft-card mb-3">
         <div class="card-body">
             <form class="row g-2">
-                <div class="col-lg-4">
+                <div class="col-12 col-lg-4">
                     <label class="form-label mb-1">Recherche</label>
                     <input class="form-control" name="recherche" value="{{ $recherche }}" placeholder="Numero facture">
                 </div>
-                <div class="col-lg-3">
+                <div class="col-12 col-lg-3">
                     <label class="form-label mb-1">Statut</label>
                     <select class="form-select" name="statut">
                         <option value="">Tous</option>
@@ -33,7 +33,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col-lg-2 d-flex align-items-end">
+                <div class="col-12 col-lg-2 d-flex align-items-end">
                     <button class="btn btn-light w-100"><i class="bi bi-funnel me-1"></i>Filtrer</button>
                 </div>
             </form>

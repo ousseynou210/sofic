@@ -7,7 +7,7 @@
         </div>
     </div>
 
-    <nav class="sidebar-nav">
+    <nav class="sidebar-nav" @click="if ($event.target.closest('a') && window.innerWidth < 992) sidebarOpen = false">
         <a href="{{ route('admin.dashboard') }}" class="sidebar-link @if(request()->routeIs('admin.dashboard')) active @endif">
             <i class="bi bi-grid"></i><span>Dashboard</span>
         </a>
